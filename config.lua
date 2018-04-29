@@ -50,7 +50,7 @@ config.startup_programs = {
     "numlockx",
     "nm-applet",
     "ibus-daemon -d",
-    "sh -c 'sleep 10; exec bcnotif'"
+    "sh -c 'sleep 30; exec bcnotif'"
 }
 
 config.widgets = {
@@ -58,7 +58,7 @@ config.widgets = {
         update_time_secs = 1.5,
     },
     system_status = {
-        startup_delay_secs = 10,
+        startup_delay_secs = 30,
         update_time_hours = 2,
     },
     volume = {
