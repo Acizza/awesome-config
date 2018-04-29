@@ -40,7 +40,7 @@ config.program_shortcuts = {
     {
         modifier = { config.modkey },
         key = "bracketleft",
-        exec = "spotify --force-device-scale-factor=2"
+        exec = "spotify"
     },
 }
 
@@ -66,7 +66,7 @@ config.widgets = {
         spotify_update_time_secs = 5,
     },
     disk_usage = {
-        partitions = { "/", "/home" },
+        partitions = { "/" },
         update_time_secs = 30,
         space_between_partitions = 20,
     },
