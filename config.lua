@@ -1,5 +1,6 @@
 local config = {}
 local awful = require("awful")
+local beautiful = require("beautiful")
 local gears = require("gears")
 local file = require("util/file")
 
@@ -60,6 +61,11 @@ config.widgets = {
     system_status = {
         startup_delay_secs = 30,
         update_time_hours = 2,
+    },
+    battery = {
+        update_time_secs = 10,
+        charged_color = "#009902",
+        charging_color = "#00ff00",
     },
     volume = {
         update_time_secs = 15,
