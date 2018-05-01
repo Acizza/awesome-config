@@ -13,6 +13,7 @@ local file = require("util/file")
 local popup = require("widgets/panel/system_status/popup")
 
 local string_match = string.match
+local string_sub = string.sub
 
 local widget_config = config.widgets.system_status
 
@@ -71,7 +72,7 @@ local function parse_command_output(stdout, stderr, exit_code)
 
     local latest_version = string_match(stdout, "<title>.-release%s(.-)</title>")
 
-    local sys_version_major = file.read(channel_path .. ".version")
+    local sys_version_major = file.read_and_trim_end(channel_path .. ".version")
     local sys_version_suffix = file.read(channel_path .. ".version-suffix")
 
     if sys_version_major == nil or sys_version_suffix == nil then

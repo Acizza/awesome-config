@@ -67,6 +67,12 @@ config.widgets = {
         charged_color = "#009902",
         charging_color = "#00ff00",
     },
+    weather = {
+        startup_delay_secs = 10,
+        update_time_secs = 15 * 60,
+        city_id = file.read_and_trim_end(config.home_path .. ".config/awesome_weather_city_id") or 0,
+        api_key = file.read_and_trim_end(config.home_path .. ".config/awesome_weather_api_key") or 0,
+    },
     volume = {
         update_time_secs = 15,
         spotify_update_time_secs = 5,
