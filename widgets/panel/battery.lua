@@ -33,10 +33,13 @@ local value_monitor = ValueMonitor:new {
 
 function value_monitor:on_set(stats)
     local charge_pcnt = stats.cur_charge / stats.max_charge * 100
+    local values = {}
 
-    local values = {
-        formatted = string_format("%0.01f%%", charge_pcnt)
-    }
+    if stats.state == BatteryState.Charged then
+        values.formatted = string_format("%d%%", charge_pcnt)
+    else
+        values.formatted = string_format("%0.01f%%", charge_pcnt)
+    end
 
     if charge_pcnt < 10 then
         values.value_color = beautiful.critical_color
@@ -66,9 +69,9 @@ local function update()
     local status_str = file.read(battery_location .. "status")
     local state
 
-    if status_str == "Charging\n" then
+    if status_str == "Charging\n" or status_str == "Unknown\n" then
         state = BatteryState.Charging
-    elseif status_str == "Charged\n" then
+    elseif status_str == "Full\n" then
         state = BatteryState.Charged
     elseif status_str == "Discharging\n" then
         state = BatteryState.Discharging
